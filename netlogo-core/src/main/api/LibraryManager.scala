@@ -151,11 +151,10 @@ class LibraryManager(userExtPath: Path, unloadExtensions: () => Unit) extends Co
 
           val installedVersionPath = s"""$category."$codeName".installedVersion"""
           val installedVersion     = getStringOption(installedLibsConf, installedVersionPath)
-          val bundled              = useBundled && bundledsConfig.hasPath(installedVersionPath) && installedVersion.isEmpty
+          val bundled              = useBundled && bundledsConfig.hasPath(installedVersionPath) && installedVersion.nonEmpty
           val minNetLogoVersion    = getStringOption(c, "minNetLogoVersion")
 
           LibraryInfo(name, codeName, shortDesc, longDesc, version, homepage, downloadURL, bundled, installedVersion, minNetLogoVersion)
-
       }
 
     infoChangeCallbacks.foreach(_.apply(libraries))

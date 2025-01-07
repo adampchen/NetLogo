@@ -291,7 +291,6 @@ class LibrariesTab( category:        String
       installButton.setEnabled(LibraryInfoDownloader.enabled && actionableLibraries.length > 0)
 
       uninstallButton.setEnabled(LibraryInfoDownloader.enabled && selectedValues.exists(_.canUninstall))
-//            ORIGINAL CODE: uninstallButton.setEnabled(LibraryInfoDownloader.enabled && selectedValues.filter(_.status != LibraryStatus.CanInstall).exists(!_.bundled))
       homepageButton.setEnabled(numSelected == 1)
 
       val installToolTip = if (numSelected == 1) selectedValue.downloadURL.toString else null
